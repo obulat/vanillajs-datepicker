@@ -1,5 +1,5 @@
-import {registerListeners, unregisterListeners} from './lib/event.js';
-import {formatDate} from './lib/date-format.js';
+import { registerListeners, unregisterListeners } from './lib/event.js';
+import { formatDate } from './lib/date-format.js';
 import Datepicker from './Datepicker.js';
 
 // filter out the config options inapproprite to pass to Datepicker
@@ -33,7 +33,7 @@ function onChangeDate(rangepicker, ev) {
   }
 
   const datepickers = rangepicker.datepickers;
-  const setDateOptions = {render: false};
+  const setDateOptions = { render: false };
   const changedSide = rangepicker.inputs.indexOf(target);
   const otherSide = changedSide === 0 ? 1 : 0;
   const changedDate = datepickers[changedSide].dates[0];
@@ -64,7 +64,7 @@ function onChangeDate(rangepicker, ev) {
 /**
  * Class representing a date range picker
  */
-export default class DateRangePicker  {
+export default class DateRangePicker {
   /**
    * Create a date range picker
    * @param  {Element} element - element to bind a date range picker
@@ -74,7 +74,7 @@ export default class DateRangePicker  {
     const inputs = Array.isArray(options.inputs)
       ? options.inputs
       : Array.from(element.querySelectorAll('input'));
-    if (inputs.length < 2) {
+    if (inputs.length < 1) {
       return;
     }
 
@@ -91,9 +91,9 @@ export default class DateRangePicker  {
     ];
     // normalize the range if inital dates are given
     if (this.dates[0] !== undefined) {
-      onChangeDate(this, {target: this.inputs[0]});
+      onChangeDate(this, { target: this.inputs[0] });
     } else if (this.dates[1] !== undefined) {
-      onChangeDate(this, {target: this.inputs[1]});
+      onChangeDate(this, { target: this.inputs[1] });
     }
   }
 
